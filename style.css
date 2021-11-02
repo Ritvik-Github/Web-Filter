@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition: 0.8s;
+}
+
+canvas{
+    animation:examplaea 10s infinite;
+}
+
+@keyframes examplea {
+    0%{
+        box-shadow: 0,0,38px, red;
+    }
+    20%{
+        box-shadow: 0,0,38px, orange;
+    }
+    40%{
+        box-shadow: 0,0,38px, yellow;
+    }
+    60%{
+        box-shadow: 0,0,38px, green;
+    }
+    80%{
+        box-shadow: 0,0,38px, blue;
+    }
+    100%{
+        box-shadow: 0,0,38px, red;
+    }
+}
