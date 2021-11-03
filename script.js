@@ -31,7 +31,7 @@ function modelLoaded(){
 
 function draw(){
     image(video, 0, 0, canvas.width, canvas.height);
-    image(img, noseX-25, noseY-10);
+    image(img, noseX, noseY);
     canvas.center();
 }
 
