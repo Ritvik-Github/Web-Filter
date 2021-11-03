@@ -2,7 +2,7 @@ var noseX = 0;
 var noseY = 0;
 
 function preload(){
-    img = loadImage("https://i.postimg.cc/sshfQbg3/m.png", console.log("succes loaded image"), console.log("failed to load image"));
+    img = loadImage("https://i.postimg.cc/sshfQbg3/m.png");
 }
 var i = 0;
 function setup(){
@@ -31,7 +31,7 @@ function modelLoaded(){
 
 function draw(){
     image(video, 0, 0, canvas.width, canvas.height);
-    image(img, noseX-25, noseY-10, 60,40);
+    image(img, noseX-25, noseY-10);
     canvas.center();
 }
 
