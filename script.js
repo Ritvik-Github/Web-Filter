@@ -1,4 +1,9 @@
-function preload(){}
+var noseX = 0;
+var noseY = 0;
+
+function preload(){
+    img = loadImage("https://i.postimg.cc/sshfQbg3/m.png", console.log("succes loaded image"), console.log("failed to load image"));
+}
 var i = 0;
 function setup(){
     canvas = createCanvas(400,300);
@@ -13,8 +18,10 @@ function setup(){
 function gotPoses(results){
     if( results.length > 0 ){
         console.log(results);
-        console.log("noseX = " + results[0].pose.nose.x);
-        console.log("noseY = " + results[0].pose.nose.y);
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
+        console.log("noseX = " + noseX);
+        console.log("noseY = " + noseY);
     }
 }
 
@@ -24,6 +31,7 @@ function modelLoaded(){
 
 function draw(){
     image(video, 0, 0, canvas.width, canvas.height);
+    image(img, noseX-25, noseY-10, 60,40);
     canvas.center();
 }
 
