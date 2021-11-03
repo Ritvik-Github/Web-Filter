@@ -1,22 +1,26 @@
 var noseX = 0;
 var noseY = 0;
 
-function preload(){
-    img = loadImage("https://i.postimg.cc/sshfQbg3/m.png");
+function preload() {
+    img = loadImage("https://i.postimg.cc/sshfQbg3/m.png", console.log("succes loaded image"), console.log("failed to load image"));
 }
-var i = 0;
-function setup(){
-    canvas = createCanvas(400,300);
+function setup() {
+    canvas = createCanvas(300, 300);
     canvas.center();
     video = createCapture(VIDEO);
+    video.size(canvas.width, canvas.height);
     video.hide();
 
     poseNet = ml5.poseNet(video, modelLoaded);
-    poseNet.on("pose",gotPoses);
+    poseNet.on("pose", gotPoses);
 }
 
-function gotPoses(results){
-    if( results.length > 0 ){
+function modelLoaded() {
+    console.log("PoseNet Initialized");
+}
+
+function gotPoses(results) {
+    if (results.length > 0) {
         console.log(results);
         noseX = results[0].pose.nose.x;
         noseY = results[0].pose.nose.y;
@@ -24,18 +28,10 @@ function gotPoses(results){
         console.log("noseY = " + noseY);
     }
 }
-
-function modelLoaded(){
-    console.log("PoseNet loaded");
+function draw() {
+    image(video, 0, 0, 300, 300);
+    image(img, noseX-25, noseY-5, 60,40);
 }
-
-function draw(){
-    image(video, 0, 0, canvas.width, canvas.height);
-    image(img, noseX, noseY);
-    canvas.center();
-}
-
-function take_snapshot(){
-    save("Filter no." + i + " .png");
-    i++;
+function take_snapshot() {
+    save("Filter.png");
 }
